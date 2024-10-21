@@ -75,3 +75,18 @@ void PrintRow(float mat[N][N], int row, int from, int numel)
 }
 
 // Exercici 3:
+void MultEscalar(float vect[N], float vectres[N], float alfa)
+{
+    printf("Introdueixi alfa: ");
+    scanf("%f", &alfa);
+
+    for (int i = 0; i < N; i++)
+    {
+        vectres[i] = vect[i] * alfa;
+    }
+}
+
+// Exercici 4:
+float Scalar(float vect1[N], float vect2[N])
+{
+}
