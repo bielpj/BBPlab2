@@ -139,3 +139,34 @@ float Onenorm(float M[N][N])
     }
     return max_suma;
 }
+
+// Exercici 10
+float NormFrobenius(float M[N][N])
+{
+    float sum = 0.0;
+    for (int i = 0; i < N; i++)
+    {
+        for (int j = 0; j < N; j++)
+        {
+            sum += M[i][j] * M[i][j];
+        }
+    }
+    return sqrt(sum);
+}
+
+// Exercici 11
+int DiagonalDom(float M[N][N])
+{
+    for (int i = 0; i < N; i++)
+    {
+        float sum = 0.0;
+        for (int j = 0; j < N; j++)
+        {
+            if (i != j)
+                sum += fabs(M[i][j]);
+        }
+        if (fabs(M[i][i]) < sum)
+            return 0;
+    }
+    return 1;
+}
