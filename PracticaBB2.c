@@ -100,27 +100,21 @@ float Scalar(float vect1[N], float vect2[N])
 // Exercici 5:
 float Magnitude(float vect[N])
 {
-    float resultat = 0.0;
-    for (int i = 0; i < N; i++)
-    {
-        resultat += vect[i] * vect[i];
-    }
-    resultat = sqrt(resultat);
+    float resultat = sqrt(Scalar(vect, vect));
     return resultat;
 }
 
 // Exercici 6:
 int Ortogonal(float vect1[N], float vect2[N])
 {
-    float resultat = 0.0;
-    for (int i = 0; i < N; i++)
-    {
-        resultat += vect1[i] * vect2[i];
-    }
+    float resultat = Scalar(vect1, vect2);
     if (resultat == 0)
         return 1;
     else
-        return 1;
+        return 0;
 }
 
 // Exercici 7
+void Projection(float vect1[N], float vect2[N], float vectres[N])
+{
+}
