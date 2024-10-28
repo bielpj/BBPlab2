@@ -38,12 +38,6 @@ void InitData()
 // Exercici 1:
 void PrintVect(float vect[N], int from, int numel)
 {
-    // Demanem from i numel i els convertim en variables:
-    printf("Introdueix a partir de quina posició vols els nombres del vectors: ");
-    scanf("%d", &from);
-    printf("Introdueix el nombre d'elements que vols mostrar: ");
-    scanf("%d", &numel);
-
     // declarem la variable i:
     int i = 0;
 
@@ -57,14 +51,6 @@ void PrintVect(float vect[N], int from, int numel)
 // Exercici 2:
 void PrintRow(float mat[N][N], int row, int from, int numel)
 {
-    // Demanem la filera, a partir d'on volem els nombres i la qualtitat de nombres:
-    printf("Introdueixi la fila la qual vols agafar els nombres: ");
-    scanf("%d", &row);
-    printf("Introdueix a partir de quina posició vols els nombres del vectors: ");
-    scanf("%d", &from);
-    printf("Introdueix el nombre d'elements que vols mostrar: ");
-    scanf("%d", &numel);
-
     int i = 0;
 
     // Iniciem un for per imprimir els nombres demanats a partir del nombre "from" de la línia 2.
@@ -77,9 +63,6 @@ void PrintRow(float mat[N][N], int row, int from, int numel)
 // Exercici 3:
 void MultEscalar(float vect[N], float vectres[N], float alfa)
 {
-    printf("Introdueixi alfa: ");
-    scanf("%f", &alfa);
-
     for (int i = 0; i < N; i++)
     {
         vectres[i] = vect[i] * alfa;
@@ -117,4 +100,10 @@ int Ortogonal(float vect1[N], float vect2[N])
 // Exercici 7
 void Projection(float vect1[N], float vect2[N], float vectres[N])
 {
+    float resultat_escalar = Scalar(vect1, vect2);
+    float resultat_modul = Magnitude(vect2);
+    float resultat_divisio = resultat_escalar / resultat_modul;
+    MultEscalar(vect2, vectres, resultat_divisio);
 }
+
+// Exercici 8
