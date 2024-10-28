@@ -89,4 +89,38 @@ void MultEscalar(float vect[N], float vectres[N], float alfa)
 // Exercici 4:
 float Scalar(float vect1[N], float vect2[N])
 {
+    float resultat = 0.0;
+    for (int i = 0; i < N; i++)
+    {
+        resultat += vect1[i] * vect2[i];
+    }
+    return resultat;
 }
+
+// Exercici 5:
+float Magnitude(float vect[N])
+{
+    float resultat = 0.0;
+    for (int i = 0; i < N; i++)
+    {
+        resultat += vect[i] * vect[i];
+    }
+    resultat = sqrt(resultat);
+    return resultat;
+}
+
+// Exercici 6:
+int Ortogonal(float vect1[N], float vect2[N])
+{
+    float resultat = 0.0;
+    for (int i = 0; i < N; i++)
+    {
+        resultat += vect1[i] * vect2[i];
+    }
+    if (resultat == 0)
+        return 1;
+    else
+        return 1;
+}
+
+// Exercici 7
