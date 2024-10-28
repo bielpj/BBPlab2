@@ -107,3 +107,35 @@ void Projection(float vect1[N], float vect2[N], float vectres[N])
 }
 
 // Exercici 8
+float Infininorm(float M[N][N])
+{
+    float max_suma = 0.0;
+    for (int i = 0; i < N; i++)
+    {
+        float suma_linia = 0.0;
+        for (int j = 0; j < N; j++)
+        {
+            suma_linia += fabs(M[i][j]);
+        }
+        if (suma_linia > max_suma)
+            max_suma = suma_linia;
+    }
+    return max_suma;
+}
+
+// Exercici 9
+float Onenorm(float M[N][N])
+{
+    float max_suma = 0.0;
+    for (int i = 0; i < N; i++)
+    {
+        float suma_columna = 0.0;
+        for (int j = 0; j < N; j++)
+        {
+            suma_columna += fabs(M[j][i]);
+        }
+        if (suma_columna > max_suma)
+            max_suma = suma_columna;
+    }
+    return max_suma;
+}
