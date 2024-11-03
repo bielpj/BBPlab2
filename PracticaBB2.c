@@ -38,11 +38,11 @@ void InitData()
 // Exercici 1:
 void PrintVect(float vect[N], int from, int numel)
 {
-    // declarem la variable i:
-    int i = 0;
+    // Declarem la variable i:
+    int i;
 
     // Iniciem un for per imprimir els nombres demanats a partir del nombre "from".
-    for (vect[i] = from; i < from + numel; i++)
+    for (i = from; i < from + numel; i++)
     {
         printf("Element %d: %f\n", i, vect[i]);
     }
@@ -51,10 +51,10 @@ void PrintVect(float vect[N], int from, int numel)
 // Exercici 2:
 void PrintRow(float mat[N][N], int row, int from, int numel)
 {
-    int i = 0;
+    int i;
 
-    // Iniciem un for per imprimir els nombres demanats a partir del nombre "from" de la línia 2.
-    for (mat[row][i] = from; i < from + numel; i++)
+    // Iniciem un for per imprimir els nombres demanats a partir del nombre "from" de la fila.
+    for (i = from; i < from + numel; i++)
     {
         printf("Element %d de la fila %d: %f\n", i, row, mat[row][i]);
     }
