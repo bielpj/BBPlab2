@@ -170,3 +170,18 @@ int DiagonalDom(float M[N][N])
     }
     return 1;
 }
+
+// Exercici 12
+void Matriu_x_Vector(float M[N][N], float vect[N], float vectres[N])
+{
+    for (int i = 0; i < N; i++)
+    {
+        vectres[i] = 0;
+        for (int j = 0; j < N; j++)
+        {
+            vectres[i] += M[i][j] * vect[j];
+        }
+    }
+}
+
+// Exercici 13
