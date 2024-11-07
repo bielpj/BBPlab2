@@ -185,3 +185,37 @@ void Matriu_x_Vector(float M[N][N], float vect[N], float vectres[N])
 }
 
 // Exercici 13
+int Jacobi(float M[N][N], float vect[N], float vectres[N], unsigned iter)
+{
+    float x_prev[N];
+    int i, j, k;
+
+    // Inicialitzar el vector de solució inicial amb zeros
+    for (i = 0; i < N; i++)
+    {
+        vectres[i] = 0.0;
+    }
+
+    // Iteracions del mètode de Jacobi
+    for (k = 0; k < iter; k++)
+    {
+        for (i = 0; i < N; i++)
+        {
+            x_prev[i] = vectres[i];
+        }
+
+        for (i = 0; i < N; i++)
+        {
+            float sigma = 0.0;
+            for (j = 0; j < N; j++)
+            {
+                if (j != i)
+                {
+                    sigma += M[i][j] * x_prev[j];
+                }
+            }
+            vectres[i] = (vect[i] - sigma) / M[i][i];
+        }
+    }
+    return 1; // Retorna 1 indicant que el càlcul s'ha completat
+}
