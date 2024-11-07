@@ -9,6 +9,7 @@
 int Mat[N][N];
 int MatDD[N][N];
 int v1[N], v2[N], v3[N], v4[N];
+int ResultVector[N];
 
 // Funció donada:
 void InitData()
@@ -218,4 +219,83 @@ int Jacobi(float M[N][N], float vect[N], float vectres[N], unsigned iter)
         }
     }
     return 1; // Retorna 1 indicant que el càlcul s'ha completat
+}
+
+// Final
+
+int main()
+{
+    // Inicialitzem les dades
+    InitData();
+
+    // A. Visualització de vectors
+    printf("V1 del 0 al 9 i del 256 al 265:\n");
+    PrintVect(v1, 0, 10);
+    PrintVect(v1, 256, 10);
+
+    printf("V2 del 0 al 9 i del 256 al 265:\n");
+    PrintVect(v2, 0, 10);
+    PrintVect(v2, 256, 10);
+
+    printf("V3 del 0 al 9 i del 256 al 265:\n");
+    PrintVect(v3, 0, 10);
+    PrintVect(v3, 256, 10);
+
+    // B. Visualització de files de la matriu Mat
+    printf("Mat fila 0 del 0 al 9:\n");
+    PrintRow(Mat, 0, 0, 10);
+    printf("Mat fila 100 del 0 al 9:\n");
+    PrintRow(Mat, 100, 0, 10);
+
+    // C. Visualització de files de la matriu MatDD
+    printf("MatDD fila 0 del 0 al 9:\n");
+    PrintRow(MatDD, 0, 0, 10);
+    printf("MatDD fila 100 del 95 al 104:\n");
+    PrintRow(MatDD, 100, 95, 10);
+
+    // D. Càlcul de normes i verificació de si és diagonal dominant
+    printf("Infininorma de Mat = %f\n", Infininorm(Mat));
+    printf("Norma ú de Mat = %f\n", Onenorm(Mat));
+    printf("Norma de Frobenius de Mat = %f\n", NormFrobenius(Mat));
+    printf("La matriu Mat %s diagonal dominant\n", DiagonalDom(Mat) ? "és" : "no és");
+
+    printf("Infininorma de MatDD = %f\n", Infininorm(MatDD));
+    printf("Norma ú de MatDD = %f\n", Onenorm(MatDD));
+    printf("Norma de Frobenius de MatDD = %f\n", NormFrobenius(MatDD));
+    printf("La matriu MatDD %s diagonal dominant\n", DiagonalDom(MatDD) ? "és" : "no és");
+
+    // E. Producte escalar entre vectors
+    printf("Escalar <V1, V2> = %f\n", Scalar(v1, v2));
+    printf("Escalar <V1, V3> = %f\n", Scalar(v1, v3));
+    printf("Escalar <V2, V3> = %f\n", Scalar(v2, v3));
+
+    // F. Magnitud de vectors
+    printf("Magnitud de V1 = %f\n", Magnitude(v1));
+    printf("Magnitud de V2 = %f\n", Magnitude(v2));
+    printf("Magnitud de V3 = %f\n", Magnitude(v3));
+
+    // G. Ortogonalitat entre vectors
+    printf("V1 i V2 %s ortogonals\n", Ortogonal(v1, v2) ? "són" : "no són");
+    printf("V1 i V3 %s ortogonals\n", Ortogonal(v1, v3) ? "són" : "no són");
+    printf("V2 i V3 %s ortogonals\n", Ortogonal(v2, v3) ? "són" : "no són");
+
+    // H. Multiplicació escalar del vector V3 amb 2.0
+    MultEscalar(v3, ResultVector, 2.0);
+    printf("V3 x 2.0, elements del 0 al 9 i del 256 al 265:\n");
+    PrintVect(ResultVector, 0, 10);
+    PrintVect(ResultVector, 256, 10);
+
+    // I. Projecció de vectors
+    Projection(v2, v3, ResultVector);
+    printf("Projecció de V2 sobre V3 (elements 0 a 9):\n");
+    PrintVect(ResultVector, 0, 10);
+
+    Projection(v1, v2, ResultVector);
+    printf("Projecció de V1 sobre V2 (elements 0 a 9):\n");
+    PrintVect(ResultVector, 0, 10);
+
+    // J. Multiplicació de la matriu Mat per el vector V2
+    Matriu_x_Vector(Mat, v2, ResultVector);
+    printf("Multiplicació de Mat per V2 (elements 0 a 9):\n");
+    PrintVect(ResultVector, 0, 10);
 }
