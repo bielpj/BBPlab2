@@ -9,7 +9,6 @@
 int Mat[N][N];
 int MatDD[N][N];
 int v1[N], v2[N], v3[N], v4[N];
-int ResultVector[N];
 
 // Funció donada:
 void InitData()
@@ -66,7 +65,7 @@ void MultEscalar(int vect[N], int vectres[N], int alfa)
 }
 
 // Exercici 4:
-int Scalar(int vect1[N], int vect2[N])
+float Scalar(int vect1[N], int vect2[N])
 {
     int resultat = 0;
     for (int i = 0; i < N; i++)
@@ -83,7 +82,7 @@ float Magnitude(int vect[N])
 }
 
 // Exercici 6:
-int Ortogonal(int vect1[N], int vect2[N])
+float Ortogonal(int vect1[N], int vect2[N])
 {
     return Scalar(vect1, vect2) == 0;
 }
@@ -176,7 +175,7 @@ void Matriu_x_Vector(int M[N][N], int vect[N], int vectres[N])
 }
 
 // Exercici 13
-int Jacobi(int M[N][N], int vect[N], int vectres[N], unsigned iter)
+float Jacobi(int M[N][N], int vect[N], int vectres[N], unsigned iter)
 {
     int x_prev[N];
     int i, j, k;
@@ -241,25 +240,25 @@ int main()
     PrintRow(MatDD, 100, 95, 10);
 
     // D
-    printf("Norma infinit de Mat: %f\n", Infininorm(Mat));
-    printf("Norma 1 de Mat: %f\n", Onenorm(Mat));
-    printf("Norma de Frobenius de Mat: %f\n", NormFrobenius(Mat));
+    printf("Norma infinit de Mat: %.2f\n", Infininorm(Mat));
+    printf("Norma 1 de Mat: %.2f\n", Onenorm(Mat));
+    printf("Norma de Frobenius de Mat: %.2f\n", NormFrobenius(Mat));
     printf("La matriu Mat %s diagonal dominant\n", DiagonalDom(Mat) ? "és" : "no és");
 
-    printf("Infininorma de MatDD = %f\n", Infininorm(MatDD));
-    printf("Norma ú de MatDD = %f\n", Onenorm(MatDD));
-    printf("Norma de Frobenius de MatDD = %f\n", NormFrobenius(MatDD));
+    printf("Infininorma de MatDD = %.2f\n", Infininorm(MatDD));
+    printf("Norma ú de MatDD = %.2f\n", Onenorm(MatDD));
+    printf("Norma de Frobenius de MatDD = %.2f\n", NormFrobenius(MatDD));
     printf("La matriu MatDD %s diagonal dominant\n", DiagonalDom(MatDD) ? "és" : "no és");
 
     // E
-    printf("Escalar <V1, V2> = %d\n", Scalar(v1, v2));
-    printf("Escalar <V1, V3> = %d\n", Scalar(v1, v3));
-    printf("Escalar <V2, V3> = %d\n", Scalar(v2, v3));
+    printf("Escalar <V1, V2> = %.2f\n", Scalar(v1, v2));
+    printf("Escalar <V1, V3> = %.2f\n", Scalar(v1, v3));
+    printf("Escalar <V2, V3> = %.2f\n", Scalar(v2, v3));
 
     // F
-    printf("Magnitud de V1 = %f\n", Magnitude(v1));
-    printf("Magnitud de V2 = %f\n", Magnitude(v2));
-    printf("Magnitud de V3 = %f\n", Magnitude(v3));
+    printf("Magnitud de V1 = %.2f\n", Magnitude(v1));
+    printf("Magnitud de V2 = %.2f\n", Magnitude(v2));
+    printf("Magnitud de V3 = %.2f\n", Magnitude(v3));
 
     // G
     printf("V1 i V2 %s ortogonals\n", Ortogonal(v1, v2) ? "són" : "no són");
@@ -267,22 +266,22 @@ int main()
     printf("V2 i V3 %s ortogonals\n", Ortogonal(v2, v3) ? "són" : "no són");
 
     // H
-    MultEscalar(v3, ResultVector, 2);
+    MultEscalar(v3, v4, 2);
     printf("V3 x 2, elements del 0 al 9 i del 256 al 265:\n");
-    PrintVect(ResultVector, 0, 10);
-    PrintVect(ResultVector, 256, 10);
+    PrintVect(v4, 0, 10);
+    PrintVect(v4, 256, 10);
 
     // I
-    Projection(v2, v3, ResultVector);
+    Projection(v2, v3, v4);
     printf("Projecció de V2 sobre V3 (elements 0 a 9):\n");
-    PrintVect(ResultVector, 0, 10);
+    PrintVect(v4, 0, 10);
 
-    Projection(v1, v2, ResultVector);
+    Projection(v1, v2, v4);
     printf("Projecció de V1 sobre V2 (elements 0 a 9):\n");
-    PrintVect(ResultVector, 0, 10);
+    PrintVect(v4, 0, 10);
 
     // J
-    Matriu_x_Vector(Mat, v2, ResultVector);
+    Matriu_x_Vector(Mat, v2, v4);
     printf("Multiplicació de Mat per V2 (elements 0 a 9):\n");
-    PrintVect(ResultVector, 0, 10);
+    PrintVect(v4, 0, 10);
 }
