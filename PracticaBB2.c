@@ -6,9 +6,9 @@
 #define N 512
 
 // Introduïm les matrius i els vectors
-int Mat[N][N];
-int MatDD[N][N];
-int v1[N], v2[N], v3[N], v4[N];
+float Mat[N][N];
+float MatDD[N][N];
+float v1[N], v2[N], v3[N], v4[N];
 
 // Funció donada:
 void InitData()
@@ -36,27 +36,27 @@ void InitData()
 }
 
 // Exercici 1:
-void PrintVect(int vect[N], int from, int numel)
+void PrintVect(float vect[N], int from, int numel)
 {
     int i;
     for (i = from; i < from + numel; i++)
     {
-        printf("Element %d: %d\n", i, vect[i]);
+        printf("Element %d: %.2f\n", i, vect[i]);
     }
 }
 
 // Exercici 2:
-void PrintRow(int mat[N][N], int row, int from, int numel)
+void PrintRow(float mat[N][N], int row, int from, int numel)
 {
     int i;
     for (i = from; i < from + numel; i++)
     {
-        printf("Element %d de la fila %d: %d\n", i, row, mat[row][i]);
+        printf("Element %d de la fila %d: %.2f\n", i, row, mat[row][i]);
     }
 }
 
 // Exercici 3:
-void MultEscalar(int vect[N], int vectres[N], int alfa)
+void MultEscalar(float vect[N], float vectres[N], int alfa)
 {
     for (int i = 0; i < N; i++)
     {
@@ -65,7 +65,7 @@ void MultEscalar(int vect[N], int vectres[N], int alfa)
 }
 
 // Exercici 4:
-float Scalar(int vect1[N], int vect2[N])
+float Scalar(float vect1[N], float vect2[N])
 {
     int resultat = 0;
     for (int i = 0; i < N; i++)
@@ -76,28 +76,28 @@ float Scalar(int vect1[N], int vect2[N])
 }
 
 // Exercici 5:
-float Magnitude(int vect[N])
+float Magnitude(float vect[N])
 {
     return sqrt(Scalar(vect, vect));
 }
 
 // Exercici 6:
-float Ortogonal(int vect1[N], int vect2[N])
+float Ortogonal(float vect1[N], float vect2[N])
 {
     return Scalar(vect1, vect2) == 0;
 }
 
 // Exercici 7:
-void Projection(int vect1[N], int vect2[N], int vectres[N])
+void Projection(float vect1[N], float vect2[N], float vectres[N])
 {
-    int resultat_escalar = Scalar(vect1, vect2);
+    float resultat_escalar = Scalar(vect1, vect2);
     float resultat_modul = Magnitude(vect2);
     float resultat_divisio = resultat_escalar / resultat_modul;
     MultEscalar(vect2, vectres, resultat_divisio);
 }
 
 // Exercici 8
-float Infininorm(int M[N][N])
+float Infininorm(float M[N][N])
 {
     float max_suma = 0.0;
     for (int i = 0; i < N; i++)
@@ -114,7 +114,7 @@ float Infininorm(int M[N][N])
 }
 
 // Exercici 9
-float Onenorm(int M[N][N])
+float Onenorm(float M[N][N])
 {
     float max_suma = 0.0;
     for (int i = 0; i < N; i++)
@@ -131,7 +131,7 @@ float Onenorm(int M[N][N])
 }
 
 // Exercici 10
-float NormFrobenius(int M[N][N])
+float NormFrobenius(float M[N][N])
 {
     float sum = 0.0;
     for (int i = 0; i < N; i++)
@@ -145,11 +145,11 @@ float NormFrobenius(int M[N][N])
 }
 
 // Exercici 11
-int DiagonalDom(int M[N][N])
+int DiagonalDom(float M[N][N])
 {
     for (int i = 0; i < N; i++)
     {
-        int sum = 0;
+        float sum = 0;
         for (int j = 0; j < N; j++)
         {
             if (i != j)
@@ -162,7 +162,7 @@ int DiagonalDom(int M[N][N])
 }
 
 // Exercici 12
-void Matriu_x_Vector(int M[N][N], int vect[N], int vectres[N])
+void Matriu_x_Vector(float M[N][N], float vect[N], float vectres[N])
 {
     for (int i = 0; i < N; i++)
     {
@@ -175,7 +175,7 @@ void Matriu_x_Vector(int M[N][N], int vect[N], int vectres[N])
 }
 
 // Exercici 13
-float Jacobi(int M[N][N], int vect[N], int vectres[N], unsigned iter)
+float Jacobi(float M[N][N], float vect[N], float vectres[N], unsigned iter)
 {
     int x_prev[N];
     int i, j, k;
